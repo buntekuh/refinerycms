@@ -276,9 +276,9 @@ module Refinery
               render :nothing => true
             end
 
-            def update_child_positions(node, #{singular_name})
-              0.upto(node['children'].length - 1) do |child_index|
-                child = node['children'][child_index.to_s]
+            def update_child_positions(_node, #{singular_name})
+              0.upto(_node['children'].length - 1) do |child_index|
+                child = _node['children'][child_index.to_s]
                 child_id = child['id'].split(/#{singular_name}\_?/)
                 child_#{singular_name} = #{class_name}.where(:id => child_id).first
                 child_#{singular_name}.move_to_child_of(#{singular_name})
